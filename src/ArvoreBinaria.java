@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 public class ArvoreBinaria {
     
     private No raiz;
@@ -27,10 +29,23 @@ public class ArvoreBinaria {
         } else if(codigo < raiz.prod.getCodigo()){
             pesquisarRecursivo(codigo, raiz.esq);
         }
-
-        return null;
-        
+        return null;       
     }
+
+    private void imprimir(){
+        imprimirEmOrdem(raiz);
+    }
+
+    private void imprimirEmOrdem(No raiz){
+        if(raiz == null){
+            return;
+        }        
+        imprimirEmOrdem(raiz.esq);
+        JOptionPane.showMessageDialog(null,raiz.prod);
+        imprimirEmOrdem(raiz.dir);
+    }
+
+
 
 
 }

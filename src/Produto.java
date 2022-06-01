@@ -15,6 +15,14 @@ public class Produto {
         this.preco = preco;
     }
 
+    @Override
+    public String toString() {
+        return "Código: " + this.codigo + 
+                "\nNome: " + this.nome + 
+                "\nQuantidade em estoque: " + this.qtdEstoque + 
+                "\nPreço: " + this.preco;
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -46,4 +54,6 @@ public class Produto {
     public void setPreco(double preco) {
         this.preco = preco;
     }
+
+
 }
