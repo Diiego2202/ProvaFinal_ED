@@ -3,10 +3,34 @@ public class ArvoreBinaria {
     private No raiz;
 
     public void inserir(Produto prod){
-        No aux = new No(prod);
+        
         if(raiz == null){
-            raiz = aux;
+            raiz = new No(prod);
+        } else{
+            raiz.inserirNo(prod);
         }
     }
+
+    public void pesquisar(int codigo){
+        pesquisarRecursivo(codigo, raiz);
+    }
+
+    public No pesquisarRecursivo(int codigo, No raiz){
+        if(raiz == null){
+            return null;
+        } else if(raiz.prod.getCodigo() == codigo){
+            return raiz;
+        }
+        
+        if(codigo > raiz.prod.getCodigo()){
+            pesquisarRecursivo(codigo, raiz.dir);
+        } else if(codigo < raiz.prod.getCodigo()){
+            pesquisarRecursivo(codigo, raiz.esq);
+        }
+
+        return null;
+        
+    }
+
 
 }
