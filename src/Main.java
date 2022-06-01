@@ -33,11 +33,11 @@ public class Main {
 
     private static String menu(){
         String aux = "Marketplace Di-Be-Jo-LLa-Z's";
-            aux += "1. Cadastrar produto";
-            aux += "2. Pesquisar produto";
-            aux += "3. Listar produtos";
-            aux += "4. Remover produto";
-            aux += "5. Finalizar";
+            aux += "\n1. Cadastrar produto";
+            aux += "\n2. Pesquisar produto";
+            aux += "\n3. Listar produtos";
+            aux += "\n4. Remover produto";
+            aux += "\n5. Finalizar";
 
         return aux;
     }

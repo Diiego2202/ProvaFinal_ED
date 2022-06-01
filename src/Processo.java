@@ -21,7 +21,7 @@ public class Processo {
     }
 
     public static void listarProduto(){
-        //catalogo.imprimir();
+        catalogo.imprimir();
     }
 
     public static void removerProduto(){

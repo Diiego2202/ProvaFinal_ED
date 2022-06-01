@@ -14,10 +14,11 @@ public class ArvoreBinaria {
     }
 
     public void pesquisar(int codigo){
-        pesquisarRecursivo(codigo, raiz);
+        No aux = pesquisarRecursivo(codigo, raiz);
+        JOptionPane.showMessageDialog(null,aux.prod);
     }
 
-    public No pesquisarRecursivo(int codigo, No raiz){
+    private No pesquisarRecursivo(int codigo, No raiz){
         if(raiz == null){
             return null;
         } else if(raiz.prod.getCodigo() == codigo){
@@ -32,8 +33,13 @@ public class ArvoreBinaria {
         return null;       
     }
 
-    private void imprimir(){
-        imprimirEmOrdem(raiz);
+    public void imprimir(){
+        if(raiz == null){
+            JOptionPane.showMessageDialog(null, "Nenhum produto cadastrado");
+        }else{
+            imprimirEmOrdem(raiz);
+        }
+
     }
 
     private void imprimirEmOrdem(No raiz){
@@ -44,8 +50,6 @@ public class ArvoreBinaria {
         JOptionPane.showMessageDialog(null,raiz.prod);
         imprimirEmOrdem(raiz.dir);
     }
-
-
 
 
 }
