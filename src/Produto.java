@@ -5,6 +5,15 @@ public class Produto {
     private int qtdEstoque;
     private double preco;
 
+    public Produto(){
+    }
+
+    public Produto(int codigo, String nome, int qtdEstoque, double preco){
+        this.codigo = codigo;
+        this.nome = nome;
+        this.qtdEstoque = qtdEstoque;
+        this.preco = preco;
+    }
 
     public int getCodigo() {
         return codigo;
