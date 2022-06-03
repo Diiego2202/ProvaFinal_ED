@@ -3,6 +3,7 @@ import javax.swing.JOptionPane;
 public class ArvoreBinaria {
     
     private No raiz;
+    private No pai = null;
 
     public void inserir(Produto prod){
         
@@ -14,23 +15,32 @@ public class ArvoreBinaria {
     }
 
     public void pesquisar(int codigo){
+
         No aux = pesquisarRecursivo(codigo, raiz);
-        JOptionPane.showMessageDialog(null,aux.prod);
+        if(aux!=null){
+            JOptionPane.showMessageDialog(null,aux.prod);
+        }else{
+            JOptionPane.showMessageDialog(null,"Produto não encontrado");
+        }
+       
+        
     }
 
     private No pesquisarRecursivo(int codigo, No raiz){
+
         if(raiz == null){
             return null;
         } else if(raiz.prod.getCodigo() == codigo){
             return raiz;
         }
         
+        pai = raiz;
         if(codigo > raiz.prod.getCodigo()){
-            pesquisarRecursivo(codigo, raiz.dir);
-        } else if(codigo < raiz.prod.getCodigo()){
-            pesquisarRecursivo(codigo, raiz.esq);
+          return  pesquisarRecursivo(codigo, raiz.dir);
+        } else{
+           return pesquisarRecursivo(codigo, raiz.esq);
         }
-        return null;       
+     
     }
 
     public void imprimir(){
@@ -41,7 +51,6 @@ public class ArvoreBinaria {
         }
 
     }
-
     private void imprimirEmOrdem(No raiz){
         if(raiz == null){
             return;
@@ -49,6 +58,34 @@ public class ArvoreBinaria {
         imprimirEmOrdem(raiz.esq);
         JOptionPane.showMessageDialog(null,raiz.prod);
         imprimirEmOrdem(raiz.dir);
+    }
+
+    public void remover(int codigo){
+        No aux = pesquisarRecursivo(codigo, raiz);
+
+            if(pai==null){
+                raiz = null;
+            }else if(aux.dir == null && aux.esq == null){
+                    if(pai.dir == aux){
+                        pai.dir = null;
+                    }else{
+                        pai.esq = null;
+                    }
+            }else if (aux.dir != null && aux.esq == null){
+                   if(pai.dir == aux){
+                       pai.dir = aux.dir;
+                   }else{
+                       pai.esq = aux.dir;
+                   }
+            }else if (aux.dir == null && aux.esq != null){
+                   if(pai.dir == aux){
+                       pai.dir = aux.esq;
+                   }else{
+                       pai.esq = aux.esq;
+                   }
+            }else {
+                    pai.dir = aux.dir;              
+            }       
     }
 
 

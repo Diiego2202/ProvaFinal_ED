@@ -17,7 +17,7 @@ public class Processo {
 
     public static void pesquisarProduto(){
         int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo do produto: "));
-        //catalogo.pesquisar(codigo);
+        catalogo.pesquisar(codigo);
     }
 
     public static void listarProduto(){
@@ -25,7 +25,8 @@ public class Processo {
     }
 
     public static void removerProduto(){
-        //catalogo.remover(codigo);
+        int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo do produto: "));
+        catalogo.remover(codigo);
     }
 
 }

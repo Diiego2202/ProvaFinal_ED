@@ -11,14 +11,14 @@ public class No {
     }
 
     public void inserirNo(Produto aux){
-        if(aux.getPreco() > prod.getPreco()){
+        if(aux.getCodigo() > prod.getCodigo()){
             if(dir == null){
                 dir = new No(aux);
             } else{
                 dir.inserirNo(aux);
             }
         } else{
-            if(aux.getPreco() < prod.getPreco()){
+            if(aux.getCodigo() < prod.getCodigo()){
                 if(esq == null){
                     esq = new No(prod);
                 } else{
