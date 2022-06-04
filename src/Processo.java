@@ -25,7 +25,12 @@ public class Processo {
     }
 
     public static void listarProduto(){
-        catalogo.imprimir();
+        if(catalogo.getRaiz() == null){
+            JOptionPane.showMessageDialog(null, "Nenhum produto cadastrado");
+        } else{
+            catalogo.imprimir();;
+        } 
+        
     }
 
     public static void removerProduto(){
@@ -33,7 +38,7 @@ public class Processo {
             JOptionPane.showMessageDialog(null, "Nenhum produto cadastrado");
         } else{
             int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo do produto: "));
-            catalogo.remover(codigo);
+            catalogo.teste(codigo);
         }      
     }
 
