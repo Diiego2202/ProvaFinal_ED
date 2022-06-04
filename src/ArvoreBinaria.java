@@ -5,6 +5,10 @@ public class ArvoreBinaria {
     private No raiz;
     private No pai = null;
 
+    public No getRaiz() {
+        return raiz;
+    }
+
     public void inserir(Produto prod){
         
         if(raiz == null){

@@ -16,8 +16,12 @@ public class Processo {
     }
 
     public static void pesquisarProduto(){
-        int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo do produto: "));
-        catalogo.pesquisar(codigo);
+        if(catalogo.getRaiz() == null){
+            JOptionPane.showMessageDialog(null, "Nenhum produto cadastrado");
+        } else{
+            int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo do produto: "));
+            catalogo.pesquisar(codigo);
+        } 
     }
 
     public static void listarProduto(){
@@ -25,8 +29,12 @@ public class Processo {
     }
 
     public static void removerProduto(){
-        int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo do produto: "));
-        catalogo.remover(codigo);
+        if(catalogo.getRaiz() == null){
+            JOptionPane.showMessageDialog(null, "Nenhum produto cadastrado");
+        } else{
+            int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo do produto: "));
+            catalogo.remover(codigo);
+        }      
     }
 
 }
