@@ -18,6 +18,7 @@ public class Main {
                     }else if ("4".equals(opcao)){
                         Processo.removerProduto();
                     } else if("5".equals(opcao)){
+                        Processo.altura();
                         break;
                     } else {
                         JOptionPane.showMessageDialog(null,"Opção inválido! \nDigite um numero entre 1 e 5");

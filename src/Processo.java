@@ -28,7 +28,7 @@ public class Processo {
         if(catalogo.getRaiz() == null){
             JOptionPane.showMessageDialog(null, "Nenhum produto cadastrado");
         } else{
-            catalogo.imprimir();;
+            catalogo.imprimir();
         } 
         
     }
@@ -40,6 +40,10 @@ public class Processo {
             int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo do produto: "));
             catalogo.teste(codigo);
         }      
+    }
+
+    public static void altura(){
+        catalogo.altura();
     }
 
 }

@@ -1,19 +1,28 @@
+import javax.lang.model.util.ElementScanner14;
 import javax.swing.JOptionPane;
 
 public class ArvoreBinaria {
     
+     // verificar direção filho e atribuir a variavel antes ex : aux = dir -> if pai.dir = aux
     private No raiz;
     private No pai = null;
+    private int altura;
+    private int AlturaTotal = 0;
 
     public No getRaiz() {
         return raiz;
     }
 
     public void inserir(Produto prod){
+        altura = 0;
         if(raiz == null){
             raiz = new No(prod);
-        } else{
-            raiz.inserirNo(prod);
+        } else{    
+            altura = raiz.inserirNo(prod,altura);
+        }
+
+        if (altura>=AlturaTotal){
+            AlturaTotal = altura;
         }
     }
 
@@ -23,9 +32,7 @@ public class ArvoreBinaria {
             JOptionPane.showMessageDialog(null,aux.prod);
         }else{
             JOptionPane.showMessageDialog(null,"Produto não encontrado");
-        }
-       
-        
+        }     
     }
 
     private No pesquisarRecursivo(int codigo, No raiz){
@@ -55,37 +62,54 @@ public class ArvoreBinaria {
         imprimirEmOrdem(raiz.dir);
     }
 
-    public void remover(int codigo){
-        No aux = pesquisarRecursivo(codigo, raiz);
+ //  public void remover(int codigo){
+ //      No aux = pesquisarRecursivo(codigo, raiz);
 
-            if(pai==null){
-                raiz = null;
-            }else if(aux.dir == null && aux.esq == null){
-                    if(pai.dir == aux){
-                        pai.dir = null;
-                    }else{
-                        pai.esq = null;
-                    }
-            }else if (aux.dir != null && aux.esq == null){
-                   if(pai.dir == aux){
-                       pai.dir = aux.dir;
-                   }else{
-                       pai.esq = aux.dir;
-                   }
-            }else if (aux.dir == null && aux.esq != null){
-                   if(pai.dir == aux){
-                       pai.dir = aux.esq;
-                   }else{
-                       pai.esq = aux.esq;
-                   }
-            }else {
-                    pai.dir = aux.dir;              
-            }       
-    }
+ //          if(pai==null && aux.dir == null && aux.esq == null){
+ //              raiz = null;
+ //          }else if(aux.dir == null && aux.esq == null){
+ //                  if(pai.dir == aux){
+ //                      pai.dir = null;
+ //                  }else{
+ //                      pai.esq = null;
+ //                  }
+ //          }else if (aux.dir != null && aux.esq == null){
+ //                 if(pai.dir == aux){
+ //                     pai.dir = aux.dir;
+ //                 }else{
+ //                     pai.esq = aux.dir;
+ //                 }
+ //          }else if (aux.dir == null && aux.esq != null){
+ //                 if(pai.dir == aux){
+ //                     pai.dir = aux.esq;
+ //                 }else{
+ //                     pai.esq = aux.esq;
+ //                 }
+ //          }else {   
+ //                  No posi;
+ //                  if(pai == null){
+ //                       posi = null;   
+ //                  }else if(pai.dir == aux){
+ //                       posi = pai.dir;
+ //                  }else{
+ //                      posi = pai.esq; 
+ //                  }
 
-
-
-
+ //                  No filho = aux;
+ //                  No paidofilho = null;
+ //                  while (aux.esq != null){
+ //                      paidofilho = aux;
+ //                      aux = aux.esq;
+ //                  }          
+ //                    paidofilho.esq = null;        
+ //                    aux.esq = filho.esq;
+ //                    aux.dir = filho.dir; 
+ //                    if (posi != null){
+ //                      posi = aux;
+ //                    }
+ //                            
+ //          }       
+ //  }
 
     //teste remover
     public boolean teste(int codigo){
@@ -103,6 +127,7 @@ public class ArvoreBinaria {
                 atual = atual.dir;
             }
         }
+        //verifica se o elemento existe
         if(atual != null){
             if(atual.dir != null){ //2 filhos ou somentes filhos à direita
                 No aux = atual.dir;
@@ -111,7 +136,7 @@ public class ArvoreBinaria {
                     paiAux = aux;
                     aux = aux.esq;
                 }
-
+                aux.esq = atual.esq;
                 if(pai != null){
                     if(atual.prod.getCodigo() < pai.prod.getCodigo()){
                         pai.esq = aux;
@@ -120,6 +145,8 @@ public class ArvoreBinaria {
                     }
                 } else{
                     this.raiz = aux;
+                    this.raiz.dir = aux.dir;
+                    this.raiz.esq = atual.esq;
                 }
 
                 if(aux.prod.getCodigo() < paiAux.prod.getCodigo()){
@@ -146,12 +173,13 @@ public class ArvoreBinaria {
                     this.raiz = aux;
                 }
 
+                //removeu o elemento da árvore
                 if(aux.prod.getCodigo() < paiAux.prod.getCodigo()){
                     paiAux.esq = null;
                 } else{
                     paiAux.dir = null;
                 }
-            } else{
+            } else{ //não tem filho
                 if(pai != null){
                     if(atual.prod.getCodigo() < pai.prod.getCodigo()){
                         pai.esq = null;
@@ -169,6 +197,8 @@ public class ArvoreBinaria {
         }
     }
 
-
+    public void altura(){
+		JOptionPane.showMessageDialog(null, AlturaTotal);
+	}
 
 }
