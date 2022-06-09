@@ -17,10 +17,10 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Código: " + this.codigo + 
+        return "CÃ³digo: " + this.codigo + 
                 "\nNome: " + this.nome + 
                 "\nQuantidade em estoque: " + this.qtdEstoque + 
-                "\nPreço: " + this.preco;
+                "\nPreÃ§o: " + this.preco;
     }
 
     public int getCodigo() {

@@ -10,26 +10,20 @@ public class No {
         this.prod = prod;
     }
 
-    public int inserirNo(Produto aux,int altura){
+    public void inserirNo(Produto aux){
   
         if(aux.getCodigo() > prod.getCodigo()){
             if(dir == null){            
                 dir = new No(aux);
-                return altura +1 ;
             } else{
-                altura++;
-                return dir.inserirNo(aux,altura);
+               dir.inserirNo(aux);
             }
         } else{
                 if(esq == null){
-                    esq = new No(aux);
-                    return altura + 1;
+                     esq = new No(aux);
                 } else{
-                    altura++;
-                    return esq.inserirNo(aux,altura);
+                    esq.inserirNo(aux);
                 }
-            }
-       
-      
+            }      
         }
 }
