@@ -144,7 +144,7 @@ public class ArvoreBinaria {
 
     public void altura(){
         int altura= CalculaAltura(raiz); 
-		JOptionPane.showMessageDialog(null, "A altura mÃ¡xima da arvore Ã©: " +altura);    
+		JOptionPane.showMessageDialog(null, "A altura máxima da arvore é : " +altura);    
     }
 
     private int CalculaAltura(No raiz){

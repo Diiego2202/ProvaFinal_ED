@@ -21,7 +21,7 @@ public class Main {
                         Processo.altura();
                         break;
                     } else {
-                        JOptionPane.showMessageDialog(null,"OpÃ§Ã£o invÃ¡lido! \nDigite um numero entre 1 e 5");
+                        JOptionPane.showMessageDialog(null,"Opção inválida! \nDigite um numero entre 1 e 5");
                         throw new UnsupportedOperationException();
                     }
                 
